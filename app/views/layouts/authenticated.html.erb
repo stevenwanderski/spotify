@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spotify</title>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="layout layout--sidebar">
+    <aside class="sidebar">
+      <div class="sidebar__title">
+        Folders
+      </div>
+
+      <%= link_to 'All', albums_path, class: 'sidebar__link' %>
+      <% @tags.each do |tag| %>
+        <%= link_to tag.name, albums_path(tag_id: tag.id), class: 'sidebar__link' %>
+      <% end %>
+    </aside>
+
+    <div class="main">
+      <%= yield %>
+    </div>
+
+  </div>
+
+  <script src="https://sdk.scdn.co/spotify-player.js"></script>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+</body>
+</html>

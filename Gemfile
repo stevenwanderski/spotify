@@ -8,7 +8,7 @@ gem 'pg'
 gem 'puma'
 gem 'awesome_print'
 gem 'annotate'
-gem 'rspotify'
+gem 'rspotify', '2.1.1'
 gem 'devise'
 
 group :development, :test do
@@ -26,7 +26,7 @@ group :test do
 end
 
 group :development do
-  gem 'better_errors'
+  # gem 'better_errors'
   gem 'binding_of_caller'
   gem 'http_logger'
 end

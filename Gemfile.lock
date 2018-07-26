@@ -44,10 +44,7 @@ GEM
       io-like (~> 0.3.0)
     arel (6.0.4)
     awesome_print (1.8.0)
-    better_errors (2.3.0)
-      coderay (>= 1.0.0)
-      erubi (>= 1.0.0)
-      rack (>= 0.9.0)
+    bcrypt (3.1.11)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
     builder (3.2.3)
@@ -69,6 +66,12 @@ GEM
     crass (1.0.4)
     database_cleaner (1.6.1)
     debug_inspector (0.0.3)
+    devise (4.2.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0, < 5.1)
+      responders
+      warden (~> 1.2.3)
     diff-lcs (1.3)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
@@ -76,7 +79,6 @@ GEM
     dotenv-rails (2.2.1)
       dotenv (= 2.2.1)
       railties (>= 3.2, < 5.2)
-    erubi (1.6.1)
     erubis (2.7.0)
     execjs (2.7.0)
     faraday (0.12.2)
@@ -128,6 +130,7 @@ GEM
     omniauth-oauth2 (1.3.1)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    orm_adapter (0.5.0)
     pg (0.21.0)
     pry (0.11.1)
       coderay (~> 1.1.0)
@@ -173,6 +176,8 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    responders (2.3.0)
+      railties (>= 4.2.0, < 5.1)
     rest-client (2.0.2)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
@@ -194,7 +199,7 @@ GEM
       rspec-mocks (~> 3.6.0)
       rspec-support (~> 3.6.0)
     rspec-support (3.6.0)
-    rspotify (2.1.0)
+    rspotify (2.1.1)
       omniauth-oauth2 (~> 1.3.1)
       rest-client (~> 2.0.2)
     rubyzip (1.2.1)
@@ -229,6 +234,8 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
+    warden (1.2.7)
+      rack (>= 1.0)
     xpath (2.1.0)
       nokogiri (~> 1.3)
 
@@ -238,11 +245,11 @@ PLATFORMS
 DEPENDENCIES
   annotate
   awesome_print
-  better_errors
   binding_of_caller
   capybara
   chromedriver-helper
   database_cleaner
+  devise
   dotenv-rails
   http_logger
   jquery-rails
@@ -253,7 +260,7 @@ DEPENDENCIES
   rails (= 4.2.8)
   rails_12factor
   rspec-rails (~> 3.0)
-  rspotify
+  rspotify (= 2.1.1)
   sass-rails (~> 5.0)
   selenium-webdriver
   uglifier (>= 1.3.0)

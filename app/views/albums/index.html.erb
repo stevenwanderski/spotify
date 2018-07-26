@@ -1,0 +1,14 @@
+<h1><%= @title %></h1>
+<div class="access-token" data-access-token="<%= @access_token %>"></div>
+<p><%= link_to('Refresh', populate_albums_path) %></p>
+<p><%= link_to('Logout', destroy_user_session_path, method: :delete) %></p>
+
+<div class="albums">
+  <% @albums.each do |album| %>
+    <div class="album" data-uri="<%= album.uri %>">
+      <div class="album__image" style="background-image: url('<%= album.image_medium_url %>');"></div>
+      <div class="album__name"><%= link_to album.name, album_path(album) %></div>
+      <div class="album__artist"><%= album.artist %></div>
+    </div>
+  <% end %>
+</div>
