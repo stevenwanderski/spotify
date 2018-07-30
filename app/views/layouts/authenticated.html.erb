@@ -2,7 +2,12 @@
 <html>
 <head>
   <title>Spotify</title>
+  <%= favicon_link_tag 'favicon.png' %>
   <%= csrf_meta_tags %>
+
+  <script src="https://sdk.scdn.co/spotify-player.js"></script>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
 </head>
 <body>
 
@@ -19,13 +24,17 @@
     </aside>
 
     <div class="main">
+      <% if notice %>
+        <div class="notice"><%= notice %></div>
+      <% end %>
+
+      <% if alert %>
+        <div class="alert"><%= alert %></div>
+      <% end %>
+
       <%= yield %>
     </div>
 
   </div>
-
-  <script src="https://sdk.scdn.co/spotify-player.js"></script>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
 </body>
 </html>

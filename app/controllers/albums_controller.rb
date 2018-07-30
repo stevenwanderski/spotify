@@ -1,8 +1,7 @@
 class AlbumsController < AuthenticatedController
   def index
     if params[:tag_id]
-      tag_id = params[:tag_id]
-      @tag = current_user.tags.find(tag_id)
+      @tag = current_user.tags.find(params[:tag_id])
       @albums = @tag.albums
       @title = @tag.name
     else
@@ -11,7 +10,6 @@ class AlbumsController < AuthenticatedController
     end
 
     @tags = current_user.tags
-    @access_token = current_user.auth_hash['credentials']['token']
   end
 
   def show
@@ -19,7 +17,12 @@ class AlbumsController < AuthenticatedController
   end
 
   def update
-    
+    @album = current_user.albums.find(params[:id])
+    if @album.update(album_params)
+      redirect_to album_path(@album), notice: 'Great job. Success.'
+    else
+      redirect_to album_path(@album), alert: 'No good. Something went wrong.'
+    end
   end
 
   def populate
@@ -53,5 +56,11 @@ class AlbumsController < AuthenticatedController
     end
 
     redirect_to albums_path
+  end
+
+  private
+
+  def album_params
+    params.require(:album).permit!
   end
 end

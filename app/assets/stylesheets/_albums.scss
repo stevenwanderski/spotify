@@ -1,20 +1,12 @@
-.albums {
+.album-grid {
   display: flex;
   flex-wrap: wrap;
   margin-left: -20px;
 }
 
-.album {
+.album-grid-item {
   margin: 20px 20px;
   max-width: 250px;
-
-  &__image {
-    margin-bottom: 10px;
-    border: solid 5px #eee;
-    width: 250px;
-    height: 250px;
-    background-size: cover;
-  }
 
   &__name {
     font-weight: 600;
@@ -26,4 +18,18 @@
     font-weight: 400;
     font-size: 14px;
   }
+}
+
+.album {
+  &__column {
+    margin-right: 40px;
+  }
+}
+
+.album-image {
+  margin-bottom: 10px;
+  border: solid 5px #eee;
+  width: 250px;
+  height: 250px;
+  background-size: cover;
 }

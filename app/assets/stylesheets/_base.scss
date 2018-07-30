@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+html, body, .layout {
+  height: 100%;
+}
+
 h1 {
   font-size: 60px;
   margin-bottom: 20px;
@@ -14,10 +18,16 @@ h1 {
   margin: 0 auto;
 }
 
+.flex {
+  display: flex;
+}
+
 .sidebar {
   background: #f9f9f9;
   padding: 30px;
   flex: 0 0 160px;
+  box-sizing: border-box;
+  overflow-y: scroll;
 
   &__title {
     text-transform: uppercase;
@@ -38,10 +48,51 @@ h1 {
 .layout {
   &--sidebar {
     display: flex;
-    // flex: 1;
   }
 }
 
 .main {
   padding: 50px;
+  flex: 1;
+  overflow-y: scroll;
+}
+
+.label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.checkbox {
+  display: block;
+  margin-bottom: 10px;
+
+  input {
+    margin-right: 5px;
+  }
+
+  label {
+    font-size: 14px;
+    cursor: pointer;
+  }
+}
+
+.button {
+  border: solid 1px #ccc;
+  border-radius: 2px;
+  background: #fff;
+  padding: 10px 20px;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #999;
+  font-weight: 400;
+
+  &:hover {
+    background: #f9f9f9;
+    cursor: pointer;
+  }
+}
+
+.field {
+  margin-bottom: 20px;
 }
