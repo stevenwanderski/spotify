@@ -10,6 +10,7 @@
 #
 
 class Tag < ActiveRecord::Base
+  belongs_to :user
   has_many :albums, through: :album_tags
   has_many :album_tags
 end

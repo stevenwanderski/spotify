@@ -13,14 +13,21 @@
 
   <div class="layout layout--sidebar">
     <aside class="sidebar">
-      <div class="sidebar__title">
-        Folders
+      <div>
+        <div class="sidebar__title">
+          <%= link_to 'Folders', tags_path %>
+        </div>
+
+        <%= link_to 'All', albums_path, class: 'sidebar__link' %>
+        <% @tags.each do |tag| %>
+          <%= link_to tag.name, albums_path(tag_id: tag.id), class: 'sidebar__link' %>
+        <% end %>
       </div>
 
-      <%= link_to 'All', albums_path, class: 'sidebar__link' %>
-      <% @tags.each do |tag| %>
-        <%= link_to tag.name, albums_path(tag_id: tag.id), class: 'sidebar__link' %>
-      <% end %>
+      <div>
+        <div class="margin-bottom"><%= link_to 'Refresh', populate_albums_path %></div>
+        <div><%= link_to 'Logout', destroy_user_session_path, method: :delete %></div>
+      </div>
     </aside>
 
     <div class="main">

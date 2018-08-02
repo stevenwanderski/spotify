@@ -1,0 +1,12 @@
+<h1>Folders</h1>
+<p><%= link_to 'Create Folder', new_tag_path %></p>
+
+<% if @tags.any? %>
+  <% @tags.each do |tag| %>
+  <p>
+    <%= tag.name %> - <%= link_to 'Edit', edit_tag_path(tag) %>
+  </p>
+  <% end %>
+<% else %>
+  No folders.
+<% end %>

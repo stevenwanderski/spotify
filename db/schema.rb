@@ -27,12 +27,13 @@ ActiveRecord::Schema.define(version: 20180726193833) do
     t.integer  "user_id"
     t.string   "spotify_id"
     t.string   "name"
-    t.string   "artist"
     t.string   "image_large_url"
     t.string   "image_medium_url"
     t.string   "image_small_url"
     t.string   "href"
     t.string   "uri"
+    t.jsonb    "artists"
+    t.datetime "added_at"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
@@ -71,6 +72,9 @@ ActiveRecord::Schema.define(version: 20180726193833) do
     t.string   "provider"
     t.string   "uid"
     t.jsonb    "auth_hash"
+    t.string   "access_token"
+    t.string   "refresh_token"
+    t.datetime "expires_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

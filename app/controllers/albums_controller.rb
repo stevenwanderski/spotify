@@ -33,22 +33,26 @@ class AlbumsController < AuthenticatedController
     limit = 50
     offset = 0
 
+    RSpotify.raw_response = true
+
     loop do
-      albums = spotify_user.saved_albums(limit: limit, offset: offset)
+      items = JSON.parse(spotify_user.saved_albums(limit: limit, offset: offset).body)['items']
 
-      break if albums.empty?
+      break if items.empty?
 
-      albums.each do |spotify_album|
+      items.each do |item|
+        spotify_album = item['album']
         Album.create!(
           user: current_user,
-          spotify_id: spotify_album.id,
-          name: spotify_album.name,
-          artist: spotify_album.artists.first.name,
-          image_large_url: spotify_album.images[0]['url'],
-          image_medium_url: spotify_album.images[1]['url'],
-          image_small_url: spotify_album.images[2]['url'],
-          href: spotify_album.href,
-          uri: spotify_album.uri
+          spotify_id: spotify_album['id'],
+          name: spotify_album['name'],
+          artists: spotify_album['artists'].map { |album| album['name'] },
+          image_large_url: spotify_album['images'][0]['url'],
+          image_medium_url: spotify_album['images'][1]['url'],
+          image_small_url: spotify_album['images'][2]['url'],
+          href: spotify_album['href'],
+          uri: spotify_album['uri'],
+          added_at: item['added_at']
         )
       end
 

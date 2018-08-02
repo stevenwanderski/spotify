@@ -18,6 +18,9 @@
 #  provider               :string
 #  uid                    :string
 #  auth_hash              :jsonb
+#  access_token           :string
+#  refresh_token          :string
+#  expires_at             :datetime
 #
 # Indexes
 #

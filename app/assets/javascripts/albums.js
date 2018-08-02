@@ -7,18 +7,13 @@ Albums = {
   },
 
   initializeSDK() {
-    const token = this.args.accessToken;
+    const accessToken = this.args.accessToken;
 
     var player = new Spotify.Player({
       name: 'Funk Player',
       getOAuthToken: (callback) => {
-        callback(token);
+        callback(accessToken);
       }
-    });
-
-    player.addListener('ready', ({ device_id }) => {
-      console.log('The Web Playback SDK is ready to play music!');
-      console.log('Device ID', device_id);
     });
 
     player.connect();
@@ -31,8 +26,11 @@ Albums = {
         body: JSON.stringify({ context_uri: uri }),
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          'Authorization': `Bearer ${accessToken}`
         }
+      }).catch((error) => {
+        alert('Token gone bad! Refresh the browser please and thank you 🙏🏼');
+        console.error(error);
       });
     });
   }

@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   resources :albums, only: [:index, :show, :update] do
     collection do
       get :populate, action: :populate
-      get '/folder/:tag_id', action: :tag
     end
   end
+
+  resources :tags, except: [:show]
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 end

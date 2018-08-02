@@ -6,12 +6,13 @@
 #  user_id          :integer
 #  spotify_id       :string
 #  name             :string
-#  artist           :string
 #  image_large_url  :string
 #  image_medium_url :string
 #  image_small_url  :string
 #  href             :string
 #  uri              :string
+#  artists          :jsonb
+#  added_at         :datetime
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #

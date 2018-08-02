@@ -7,10 +7,11 @@ class AuthenticatedController < ApplicationController
   private
 
   def assign_tags
-    @tags = current_user.tags
+    @tags = current_user.tags.order(name: :asc)
   end
 
   def assign_access_token
+    current_user.ensure_token!
     @access_token = current_user.auth_hash['credentials']['token']
   end
 end

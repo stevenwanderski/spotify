@@ -33,3 +33,39 @@
   height: 250px;
   background-size: cover;
 }
+
+.album-link {
+  color: $blue;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+[data-uri] {
+  position: relative;
+  cursor: pointer;
+
+  &::after {
+    content: 'PLAY';
+    position: absolute;
+    background: rgba(#000, .5);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.1s;
+  }
+
+  &:hover {
+    &::after {
+      opacity: 1;
+    }
+  }
+}

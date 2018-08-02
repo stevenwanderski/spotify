@@ -1,18 +1,19 @@
 <h1><%= @title %></h1>
 <div class="access-token" data-access-token="<%= @access_token %>"></div>
-<p><%= link_to('Refresh', populate_albums_path) %></p>
-<p><%= link_to('Logout', destroy_user_session_path, method: :delete) %></p>
 
 <div class="album-grid">
   <% @albums.each do |album| %>
-    <div class="album-grid-item" data-uri="<%= album.uri %>">
-      <div class="album-grid-item__image album-image" style="background-image: url('<%= album.image_medium_url %>');"></div>
-      <div class="album-grid-item__name"><%= link_to album.name, album_path(album) %></div>
-      <div class="album-grid-item__artist"><%= album.artist %></div>
+    <div class="album-grid-item">
+      <div class="album-grid-item__image album-image" data-uri="<%= album.uri %>" style="background-image: url('<%= album.image_medium_url %>');"></div>
+      <div class="album-grid-item__name"><%= link_to album.name, album_path(album), class: 'album-link' %></div>
+      <div class="album-grid-item__artist"><%= album.artists.join(', ') %></div>
     </div>
   <% end %>
 </div>
 
 <%= javascript_tag do %>
-  Albums.init({ accessToken: '<%= @access_token %>'});
+  Albums.init({
+    accessToken: '<%= @access_token %>',
+    refreshToken: '<%= @refresh_token %>'
+  });
 <% end %>
